@@ -1,0 +1,6 @@
+%ul
+  -@mail_sets.each do |mail_set|
+    %p= link_to mail_set.name, mail_set_path(mail_set)
+
+
+%p= link_to 'Create new mailset', new_mail_set_path

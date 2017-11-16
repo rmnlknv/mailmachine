@@ -1,0 +1,10 @@
+= form_for @mail_set do |f|
+  %p
+    = f.label :name
+    = f.text_field :name
+  %p
+    = f.label :addressee
+    = f.text_area :addressee
+  %p 
+  
+  = f.submit 'Update'
