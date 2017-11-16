@@ -19,5 +19,8 @@
               Home
               %span.sr-only (current)
 
-
+    - flash.each do |key, value|
+      .alert{ :class => "alert-#{key}", :role => "alert"}
+        %strong
+          = value
     = yield

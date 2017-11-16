@@ -6,3 +6,10 @@ body {
   background-color: #292b2c!important
 }
 
+.alert-alert {
+  @extend .alert-danger;
+}
+
+.alert-notice {
+  @extend .alert-success;
+}
