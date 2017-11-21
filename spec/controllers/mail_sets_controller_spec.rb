@@ -4,6 +4,8 @@ RSpec.describe MailSetsController, type: :controller do
 	let(:mail_set) { create :mail_set }
 
 	describe "GET #index" do
+		sign_in_user
+
 		let(:mail_sets) { create_list(:mail_set, 3) }
 
 		before { get :index }
@@ -18,6 +20,8 @@ RSpec.describe MailSetsController, type: :controller do
 	end
 
 	describe "GET #show" do
+		sign_in_user
+
 		before { get :show, params: {id: mail_set} }
 
 		it 'assigns the requested mail set to @mail_set' do
@@ -30,6 +34,8 @@ RSpec.describe MailSetsController, type: :controller do
 	end
 
 	describe "GET #new" do
+		sign_in_user
+
 		before { get :new }
 
 		it 'assigns a new MailSet to @mail_set' do
@@ -42,6 +48,8 @@ RSpec.describe MailSetsController, type: :controller do
 	end
 
 	describe "GET #edit" do
+		sign_in_user
+
 		before { get :edit, params: {id: mail_set} }
 
 		it 'assigns the requested mail set to @mail_set' do
@@ -54,6 +62,8 @@ RSpec.describe MailSetsController, type: :controller do
 	end
 
 	describe "POST #create" do
+		sign_in_user
+
 		context 'with valid attributes' do 
 			it 'saves the new mail set to the database' do
 				expect{ post :create, params: { mail_set: attributes_for(:mail_set) } }.to change(MailSet, :count).by(1)
@@ -78,6 +88,8 @@ RSpec.describe MailSetsController, type: :controller do
 	end
 
 	describe "PATCH #update" do
+		sign_in_user
+
 		context 'with valid attributes' do
 			it 'assigns the requested mail_set to @mail_set' do
 				patch :update, params: { id: mail_set, mail_set: attributes_for(:mail_set) }
@@ -112,6 +124,8 @@ RSpec.describe MailSetsController, type: :controller do
 	end
 
 	describe 'DELETE #destroy' do
+		sign_in_user
+		
 		before { mail_set }
 
 		it 'deletes mail set from the database' do

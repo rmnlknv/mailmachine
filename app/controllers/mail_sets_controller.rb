@@ -1,4 +1,6 @@
 class MailSetsController < ApplicationController
+	before_action :authenticate_user!
+	
 	def index
 		@mail_sets = MailSet.all
 	end
@@ -19,6 +21,7 @@ class MailSetsController < ApplicationController
 		@mail_set = MailSet.new(mail_set_params)
 
 		if @mail_set.save
+			flash[:success] = 'Your mailset successfully created.'
 			redirect_to @mail_set
 		else
 			render :new
