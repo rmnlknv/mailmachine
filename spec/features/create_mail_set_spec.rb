@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Create mail set', %q{
- 	In order to create mails
+ 	In order to create mail sets for mails
  	As an authenticated user
  	I want to be able to create mail sets
 } do
