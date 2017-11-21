@@ -1,4 +1,5 @@
 class MailSetsController < ApplicationController
+	before_action :load_mail_set, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!
 	
 	def index
@@ -6,7 +7,6 @@ class MailSetsController < ApplicationController
 	end
 
 	def show
-		@mail_set = MailSet.find(params[:id])
 	end
 
 	def new
@@ -14,7 +14,6 @@ class MailSetsController < ApplicationController
 	end
 
 	def edit
-		@mail_set = MailSet.find(params[:id])
 	end
 
 	def create
@@ -29,8 +28,6 @@ class MailSetsController < ApplicationController
 	end
 
 	def update
-		@mail_set = MailSet.find(params[:id])
-
 		if @mail_set.update(mail_set_params)
 			redirect_to @mail_set
 		else
@@ -39,13 +36,16 @@ class MailSetsController < ApplicationController
 	end
 
 	def destroy
-		@mail_set = MailSet.find(params[:id])
 		@mail_set.destroy
 		redirect_to mail_sets_path
 	end
 
 
 	private
+
+	def load_mail_set
+		@mail_set = MailSet.find(params[:id])
+	end
 
 	def mail_set_params
 		params.require(:mail_set).permit(:name, :addressee)
