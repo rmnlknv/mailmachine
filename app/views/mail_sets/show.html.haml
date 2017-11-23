@@ -1,2 +1,7 @@
 %h1= @mail_set.name
 %p= @mail_set.addressee
+
+%div.mails
+  = render 'mails'
+
+%div= link_to 'New mail', new_mail_set_mail_path(mail_set_id: @mail_set)

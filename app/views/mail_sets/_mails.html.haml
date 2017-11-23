@@ -1,0 +1,4 @@
+- @mail_set.mails.each do |mail|
+  - if mail.persisted? 
+    %p= link_to mail.title, mail_set_mail_path(@mail_set, mail)
+

@@ -1,0 +1,9 @@
+= form_for [@mail_set, @mail] do |f| 
+  %p
+    = f.label :title, 'Mail title'
+    = f.text_field :title
+  %p
+    = f.label :body, 'Mail body'
+    = f.text_area :body
+
+  = f.submit 'Create'

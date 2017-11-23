@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :mail_sets
+
+  resources :mail_sets do
+    resources :mails
+  end
 
   #temporary root to mail sets index page
   root to: "mail_sets#index"
