@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe MailsController, type: :controller do
-  let(:mail_set) { create :mail_set }
+  let(:mail_set) { create :mail_set, user_id: @user.id}
 
   describe 'POST #create' do
+    sign_in_user
     context 'with valid attributes' do
       it 'saves the new mail to the database' do
-        expect { post :create, params: { mail: attributes_for(:mail), mail_set_id: mail_set} }.to change(mail_set.mails, :count).by(1)
+        expect { post :create, params: { mail: attributes_for(:mail), mail_set_id: mail_set } }.to change(mail_set.mails, :count).by(1)
       end
 
       it 'redirect to created mail' do
@@ -28,7 +29,8 @@ RSpec.describe MailsController, type: :controller do
   end
 
   describe 'PATH #update' do
-    let(:mail) { create(:mail, mail_set: mail_set) }
+    sign_in_user
+    let(:mail) { create(:mail, mail_set: mail_set, user_id: @user.id) }
 
     context 'with valid attributes' do
       it 'assigns the requested mail to @mail' do

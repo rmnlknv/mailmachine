@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe MailSetsController, type: :controller do
-	let(:mail_set) { create :mail_set }
+	let(:mail_set) { create :mail_set, user_id: @user.id }
 
 	describe "GET #index" do
 		sign_in_user
 
-		let(:mail_sets) { create_list(:mail_set, 3) }
+		let(:mail_sets) { create_list(:mail_set, 3, user_id: @user.id) }
 
 		before { get :index }
 

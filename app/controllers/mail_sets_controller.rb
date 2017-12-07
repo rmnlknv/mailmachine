@@ -18,6 +18,7 @@ class MailSetsController < ApplicationController
 
 	def create
 		@mail_set = MailSet.new(mail_set_params)
+		@mail_set.user_id = current_user.id
 
 		if @mail_set.save
 			flash[:success] = 'Your mailset successfully created.'
@@ -29,6 +30,7 @@ class MailSetsController < ApplicationController
 
 	def update
 		if @mail_set.update(mail_set_params)
+			flash[:success] = 'Your mailset successfully updated.'
 			redirect_to @mail_set
 		else
 			render :edit
@@ -37,6 +39,7 @@ class MailSetsController < ApplicationController
 
 	def destroy
 		@mail_set.destroy
+		flash[:success] = 'Your mailset successfully deleted.'
 		redirect_to mail_sets_path
 	end
 

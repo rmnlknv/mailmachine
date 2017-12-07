@@ -1,0 +1,12 @@
+= form_for [@mail_set, @mail] do |f| 
+  = if @mail_set.errors.any?
+    = @mail_set.errors.full_messages.each do |message|
+      %li= message
+  %p
+    = f.label :title, 'Mail title'
+    = f.text_field :title
+  %p
+    = f.label :body, 'Mail body'
+    = f.text_area :body
+
+  = f.submit @mail.new_record? ? "Create mail" : "Update mail"

@@ -2,15 +2,11 @@ require 'rails_helper'
 
 RSpec.describe MailSet, type: :model do
   it { should have_many :mails }
+  it { should belong_to :user }
 
-	it 'validates presence of mailset name' do
-		expect(MailSet.new(name: '')).to_not be_valid
-		expect(MailSet.new(name: 'Test set #1')).to be_valid
-	end
+  it { should validate_presence_of :name }
 
-	it 'validates length of mailset name' do
-		expect(MailSet.new(name: 'Te')).to_not be_valid
-		expect(MailSet.new(name: 'More than 24 characters should not valid')).to_not be_valid
-		expect(MailSet.new(name: 'Just okay name for set')).to be_valid
-	end
+  it { should validate_length_of(:name).is_at_least(3) }
+  it { should validate_length_of(:name).is_at_most(24) }
+
 end

@@ -7,7 +7,7 @@ feature 'New mail', %q{
 } do
 
   given(:user) { create(:user) }
-  given!(:mail_set) { create(:mail_set) }
+  given!(:mail_set) { create(:mail_set, user_id: user.id ) }
 
   scenario 'Authenticated user create mail' do
     sign_in user

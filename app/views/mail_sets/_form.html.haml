@@ -1,0 +1,13 @@
+= form_for @mail_set do |f|
+  = if @mail_set.errors.any?
+    = @mail_set.errors.full_messages.each do |message|
+      %li= message
+  %p
+    = f.label :name
+    = f.text_field :name
+  %p
+    = f.label :addressee
+    = f.text_area :addressee
+  %p 
+  
+  = f.submit @mail_set.new_record? ? "Create mailset" : "Update mailset"
