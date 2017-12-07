@@ -20,6 +20,20 @@ feature 'Create mail set', %q{
     expect(page).to have_content 'Your mailset successfully created.'
   end
 
+  scenario 'Authenticated user creates mail set with unformatted addressee' do
+    sign_in user
+
+    visit mail_sets_path
+    click_on 'Create'
+    fill_in 'Name', with: 'Test mail set'
+    fill_in 'Addressee', with: %q{user1@test.com       user2@test.com
+
+      user3@test.com    user4@test.com}
+    click_on 'Create'
+
+    expect(page).to have_content 'user1@test.com user2@test.com user3@test.com user4@test.com'
+  end
+
   scenario 'Non-authenticated user creates mailset' do
     visit mail_sets_path
 

@@ -20,6 +20,19 @@ feature 'Edit mail set', %q{
     expect(page).to have_content 'Your mailset successfully updated.'
   end
 
+  scenario 'Authenticated user edits mail set with unformatted addressee' do
+    sign_in user
+
+    visit edit_mail_set_path(mail_set)
+    fill_in 'Name', with: 'Updated mail set'
+    fill_in 'Addressee', with: %q{user1@test.com       user2@test.com
+
+      user3@test.com    user4@test.com}
+    click_on 'Update'
+
+    expect(page).to have_content 'user1@test.com user2@test.com user3@test.com user4@test.com'
+  end
+
   scenario 'Non-authenticated user edits mailset' do
     visit edit_mail_set_path(mail_set)
 
