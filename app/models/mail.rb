@@ -6,4 +6,5 @@ class Mail < ApplicationRecord
   validates :title, presence: true, length: { in: 3..24 }
   validates :body, presence: true, length: { in: 3..1000 }
 
+  accepts_nested_attributes_for :attachments
 end
