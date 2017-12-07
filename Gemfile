@@ -74,3 +74,6 @@ gem "haml-rails", "~> 1.0"
 
 # Devise for authentication
 gem 'devise'
+
+# Carrierwave gem for files process
+gem 'carrierwave'
