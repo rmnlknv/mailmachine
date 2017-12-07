@@ -4,6 +4,7 @@ class MailsController < ApplicationController
   def new
     @mail_set = MailSet.find(params[:mail_set_id])
     @mail = @mail_set.mails.build
+    @mail.attachments.build
   end
 
   def edit
@@ -50,6 +51,6 @@ class MailsController < ApplicationController
   private
 
   def mail_params
-    params.require(:mail).permit(:title, :body)
+    params.require(:mail).permit(:title, :body, attachments_attributes: [:file])
   end
 end

@@ -1,3 +1,8 @@
 .mail
   %p.title= @mail.title
   %p.body= @mail.body
+  %p.attachments 
+    Attachments:
+    %ul
+      - @mail.attachments.each do |a|
+        %li= a.file.file.filename

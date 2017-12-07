@@ -3,6 +3,24 @@ require 'rails_helper'
 RSpec.describe MailsController, type: :controller do
   let(:mail_set) { create :mail_set, user_id: @user.id}
 
+  describe 'GET #new' do
+    sign_in_user
+
+    before { get :new, params: { mail_set_id: mail_set.id} }
+
+    it 'assigns a new Mail to @mail' do
+      expect(assigns(:mail)).to be_a_new(Mail)
+    end
+
+    it 'builds new attachment for mail' do
+      expect(assigns(:mail).attachments.first).to be_a_new(Attachment)
+    end
+
+    it 'renders new mail view' do
+      expect(response).to render_template :new
+    end
+  end
+
   describe 'POST #create' do
     sign_in_user
     context 'with valid attributes' do
