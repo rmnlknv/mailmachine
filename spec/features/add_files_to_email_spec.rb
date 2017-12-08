@@ -11,7 +11,7 @@ feature 'Add files to mail', %q{
 
   background do
     sign_in user
-    visit new_mail_set_mail_path(mail_set)
+    visit new_mail_set_email_path(mail_set)
   end
 
   scenario 'User adds file when creates mail' do

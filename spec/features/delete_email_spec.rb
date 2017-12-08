@@ -8,7 +8,7 @@ feature 'Delete mail', %q{
 
   given(:user) { create(:user) }
   given!(:mail_set) { create(:mail_set, user_id: user.id) }
-  given!(:mail) { create(:mail, mail_set_id: mail_set.id, user_id: user.id) }
+  given!(:email) { create(:email, mail_set_id: mail_set.id, user_id: user.id) }
 
   scenario 'Authenticated user deletes mail set' do
     sign_in user

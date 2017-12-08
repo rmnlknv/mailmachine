@@ -1,5 +1,5 @@
 class MailSet < ApplicationRecord
-  has_many :mails
+  has_many :emails
   belongs_to :user
 
   validates :name, presence: true, length: { in: 3..24 }

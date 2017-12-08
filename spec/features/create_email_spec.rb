@@ -11,7 +11,7 @@ feature 'New mail', %q{
 
   scenario 'Authenticated user create mail' do
     sign_in user
-    visit new_mail_set_mail_path(mail_set)
+    visit new_mail_set_email_path(mail_set)
 
     fill_in 'Mail title', with: 'My title'
     fill_in 'Mail body', with: 'My mail body'

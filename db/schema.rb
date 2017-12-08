@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207055943) do
+ActiveRecord::Schema.define(version: 20171208054808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,19 @@ ActiveRecord::Schema.define(version: 20171207055943) do
     t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "mail_id"
-    t.index ["mail_id"], name: "index_attachments_on_mail_id"
+    t.integer "email_id"
+    t.index ["email_id"], name: "index_attachments_on_email_id"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "mail_set_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["mail_set_id"], name: "index_emails_on_mail_set_id"
+    t.index ["user_id"], name: "index_emails_on_user_id"
   end
 
   create_table "mail_sets", force: :cascade do |t|
@@ -30,17 +41,6 @@ ActiveRecord::Schema.define(version: 20171207055943) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_mail_sets_on_user_id"
-  end
-
-  create_table "mails", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.bigint "mail_set_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["mail_set_id"], name: "index_mails_on_mail_set_id"
-    t.index ["user_id"], name: "index_mails_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,6 +60,6 @@ ActiveRecord::Schema.define(version: 20171207055943) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "emails", "users"
   add_foreign_key "mail_sets", "users"
-  add_foreign_key "mails", "users"
 end

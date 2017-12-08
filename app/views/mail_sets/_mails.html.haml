@@ -1,7 +1,7 @@
-- @mail_set.mails.each do |mail|
-  - if mail.persisted? 
+- @mail_set.emails.each do |email|
+  - if email.persisted? 
     %div
-      %p= link_to mail.title, mail_set_mail_path(@mail_set, mail)
-      %p= link_to 'Edit', edit_mail_set_mail_path(@mail_set, mail)
-      %p= link_to 'Delete', [@mail_set, mail], method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+      %p= link_to email.title, mail_set_email_path(@mail_set, email)
+      %p= link_to 'Edit', edit_mail_set_email_path(@mail_set, email)
+      %p= link_to 'Delete', [@mail_set, email], method: :delete, data: { confirm: 'Are you sure?' }, remote: true
 

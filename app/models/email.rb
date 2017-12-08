@@ -1,4 +1,4 @@
-class Mail < ApplicationRecord
+class Email < ApplicationRecord
   belongs_to :mail_set
   belongs_to :user
   has_many :attachments

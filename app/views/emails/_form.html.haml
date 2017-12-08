@@ -1,4 +1,4 @@
-= form_for [@mail_set, @mail] do |f| 
+= form_for [@mail_set, @email] do |f| 
   = if @mail_set.errors.any?
     = @mail_set.errors.full_messages.each do |message|
       %li= message
@@ -14,4 +14,4 @@
       = a.label :file
       = a.file_field :file
 
-  = f.submit @mail.new_record? ? "Create mail" : "Update mail"
+  = f.submit @email.new_record? ? "Create mail" : "Update mail"

@@ -5,5 +5,5 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of :password }
 
   it { should have_many :mail_sets }
-  it { should have_many :mails }
+  it { should have_many :emails }
 end
