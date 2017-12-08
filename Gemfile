@@ -70,10 +70,13 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 
 # HAML
-gem "haml-rails", "~> 1.0"
+gem 'haml-rails', '~> 1.0'
 
 # Devise for authentication
 gem 'devise'
 
 # Carrierwave gem for files process
 gem 'carrierwave'
+
+# For secure mail credentials
+gem 'figaro'
