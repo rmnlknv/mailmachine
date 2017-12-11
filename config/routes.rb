@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :emails
   end
 
+
   #temporary root to mail sets index page
   root to: "mail_sets#index"
 

@@ -48,6 +48,7 @@ class EmailsController < ApplicationController
     redirect_to mail_set_path(@mail_set)
   end
 
+
   private
 
   def email_params
