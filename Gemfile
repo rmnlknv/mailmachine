@@ -80,3 +80,6 @@ gem 'carrierwave'
 
 # For secure mail credentials
 gem 'figaro'
+
+# Delayed job for background processing
+gem 'delayed_job_active_record'
