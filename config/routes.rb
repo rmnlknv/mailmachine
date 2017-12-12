@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :mail_sets do
     resources :emails do
       get 'send_emails', to: 'emails#send_emails'
+      post 'send_later', to: 'emails#send_later'
     end
   end
 

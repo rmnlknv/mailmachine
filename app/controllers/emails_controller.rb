@@ -57,6 +57,20 @@ class EmailsController < ApplicationController
     redirect_to histories_path
   end
 
+  def send_later
+    @email = Email.find(params[:email_id])
+    datetime = DateTime.civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i,
+                              params[:date][:hour].to_i, params[:date][:minute].to_i)
+    #SendEmailsJob.delay(run_at: datetime, @email)
+    #SendEmailsJob.set(wait_until: datetime).perform_later(@email)
+    #SendEmailsJob.delay(run_at: datetime).perform_later(@email)
+    SendEmailsJob.delay(run_at: datetime).perform_later(@email)
+    flash[:success] = "Your mail queued to send at specified date and time."
+    @history = History.new(email_id: @email.id, email_title: @email.title, recipients_amount: @email.mail_set.addressee.split.count, queued: DateTime.now, sent: false, user_id: current_user.id)
+    @history.save
+    redirect_to histories_path
+  end
+
   private
 
   def email_params

@@ -6,4 +6,9 @@
     %ul
       - @email.attachments.each do |a|
         %li= a.file.file.filename
-  %p= link_to 'Send this email', { :controller => "emails", :action => "send_emails", :email_id => @email.id }
+  %p= link_to 'Send this email', % :controller => "emails", :action => "send_emails", :email_id => @email.id 
+  %p
+  = form_tag(:controller => "emails", :action => "send_later", :email_id => @email.id, :method => "post") do
+    %p= label_tag("Date to send: ")
+    %p= select_datetime Date.today
+    %p= submit_tag("Schedule")
