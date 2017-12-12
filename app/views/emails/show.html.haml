@@ -6,3 +6,4 @@
     %ul
       - @email.attachments.each do |a|
         %li= a.file.file.filename
+  %p= link_to 'Send this email', { :controller => "emails", :action => "send_emails", :email_id => @email.id }

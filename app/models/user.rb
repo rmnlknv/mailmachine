@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :emails
   has_many :mail_sets
+  has_many :histories
 end

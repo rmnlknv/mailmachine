@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211031747) do
+ActiveRecord::Schema.define(version: 20171212065655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 20171211031747) do
     t.bigint "user_id"
     t.index ["mail_set_id"], name: "index_emails_on_mail_set_id"
     t.index ["user_id"], name: "index_emails_on_user_id"
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.integer "email_id"
+    t.string "email_title"
+    t.datetime "queued"
+    t.integer "recipients_amount"
+    t.boolean "sent", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
   create_table "mail_sets", force: :cascade do |t|

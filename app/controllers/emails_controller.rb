@@ -48,6 +48,14 @@ class EmailsController < ApplicationController
     redirect_to mail_set_path(@mail_set)
   end
 
+  def send_emails
+    @email = Email.find(params[:email_id])
+    SendEmailsJob.set(wait: 5.seconds).perform_later(@email)
+    flash[:success] = "Your mail queued to send."
+    @history = History.new(email_id: @email.id, email_title: @email.title, recipients_amount: @email.mail_set.addressee.split.count, queued: DateTime.now, sent: false, user_id: current_user.id)
+    @history.save
+    redirect_to histories_path
+  end
 
   private
 

@@ -110,11 +110,11 @@ RSpec.describe MailSetsController, type: :controller do
 		end
 
 		context 'with invalid attributes' do
-			before { patch :update, params: { id: mail_set, mail_set: { name: "no", addressee: nil } } }
+			before { patch :update, params: { id: mail_set, mail_set: { name: "no", addressee: "123@" } } }
 			it 'does not change attributes of mail_set' do
 				mail_set.reload
 				expect(mail_set.name).to eq 'MyString'
-				expect(mail_set.addressee).to eq 'MyText'
+				expect(mail_set.addressee).to eq ""
 			end
 
 			it 're-renders edit view' do

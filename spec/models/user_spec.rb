@@ -6,4 +6,5 @@ RSpec.describe User, type: :model do
 
   it { should have_many :mail_sets }
   it { should have_many :emails }
+  it { should have_many :histories }
 end

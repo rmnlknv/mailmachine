@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :histories
   devise_for :users
 
   resources :mail_sets do
-    resources :emails
+    resources :emails do
+      get 'send_emails', to: 'emails#send_emails'
+    end
   end
 
 
