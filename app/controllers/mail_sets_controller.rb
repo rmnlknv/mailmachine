@@ -4,7 +4,7 @@ class MailSetsController < ApplicationController
   before_action :check_permission, except: [:index, :new, :create]
 
   def index
-    @mail_sets = current_user.mail_sets
+    @mail_sets = current_user.mail_sets.paginate(:page => params[:page], :per_page => 5)
   end
 
   def show

@@ -15,4 +15,4 @@
         %td= history.recipients_amount
         %td= history.sent ? 'Yes' : 'No'
 
-
+%div= will_paginate @histories, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

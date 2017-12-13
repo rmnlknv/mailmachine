@@ -83,3 +83,9 @@ gem 'figaro'
 
 # Delayed job for background processing
 gem 'delayed_job_active_record'
+
+# For pagination
+gem 'will_paginate'
+
+# For styling pagination gem
+gem 'will_paginate-bootstrap4'

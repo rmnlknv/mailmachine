@@ -7,3 +7,5 @@
 
 
 %p= link_to 'Create new mailset', new_mail_set_path
+
+%div= will_paginate @histories, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

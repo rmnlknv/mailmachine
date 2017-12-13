@@ -1,7 +1,7 @@
 class EmailsController < ApplicationController
   before_action :load_email, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :check_permission, except: [:new, :create]
+  before_action :check_permission, except: [:new, :create, :send_emails, :send_later]
   
   def new
     @mail_set = MailSet.find(params[:mail_set_id])
