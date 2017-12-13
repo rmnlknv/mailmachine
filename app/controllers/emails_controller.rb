@@ -1,4 +1,5 @@
 class EmailsController < ApplicationController
+  before_action :load_email, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :check_permission, except: [:new, :create]
   
@@ -9,7 +10,6 @@ class EmailsController < ApplicationController
   end
 
   def edit
-    @email = Email.find(params[:id])
     @mail_set = @email.mail_set
   end
 
@@ -26,7 +26,6 @@ class EmailsController < ApplicationController
   end
 
   def update
-    @email = Email.find(params[:id])
     @mail_set = @email.mail_set
     if @email.update(email_params)
       flash[:success] = "Your mail successfully updated."
@@ -37,12 +36,10 @@ class EmailsController < ApplicationController
   end
 
   def show
-    @email = Email.find(params[:id])
     @mail_set = @email.mail_set
   end
 
   def destroy
-    @email = Email.find(params[:id])
     @mail_set = @email.mail_set
     @email.destroy
     flash[:success] = "Your mail successfully deleted."
@@ -73,6 +70,10 @@ class EmailsController < ApplicationController
 
   def email_params
     params.require(:email).permit(:title, :body, attachments_attributes: [:file])
+  end
+
+  def load_email
+    @email = Email.find(params[:id])
   end
 
   def check_permission
