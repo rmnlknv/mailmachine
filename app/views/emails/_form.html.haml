@@ -1,13 +1,13 @@
 = form_for [@mail_set, @email] do |f| 
-  = if @mail_set.errors.any?
-    = @mail_set.errors.full_messages.each do |message|
+  - if @mail_set.errors.any?
+    - @mail_set.errors.full_messages.each do |message|
       %li= message
   %p
     = f.label :title, 'Mail title'
-    = f.text_field :title
+    = f.text_field :title, :required => true, :minlength => 3, :maxlength => 24
   %p
     = f.label :body, 'Mail body'
-    = f.text_area :body
+    = f.text_area :body, :required => true, :minlength => 3, :maxlength => 1000
   %p Attachments:
   %p
     = f.fields_for :attachments do |a|

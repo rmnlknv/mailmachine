@@ -1,10 +1,10 @@
 = form_for @mail_set do |f|
-  = if @mail_set.errors.any?
-    = @mail_set.errors.full_messages.each do |message|
+  - if @mail_set.errors.any?
+    - @mail_set.errors.full_messages.each do |message|
       %li= message
   %p
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, :required => true, :minlength => 3, :maxlength => 24
   %p
     = f.label :addressee
     = f.text_area :addressee
