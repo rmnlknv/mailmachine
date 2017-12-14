@@ -1,0 +1,16 @@
+%table.table
+  %thead
+    %tr
+      %th Email title
+      %th Queued
+      %th Recipients
+      %th Delivered
+  %tbody
+    -@histories.each do |history|
+      %tr
+        -if Email.exists?(history.email_id)
+          -email = Email.find(history.email_id)
+        %td= email.title
+        %td= history.queued.strftime("%d.%m.%Y %H:%M")
+        %td= history.recipients_amount
+        %td= history.sent ? 'Yes' : 'No'

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :histories
   devise_for :users
 
   resources :mail_sets do
@@ -8,6 +7,8 @@ Rails.application.routes.draw do
       post 'send_later', to: 'emails#send_later'
     end
   end
+
+  resources :histories
 
 
   #temporary root to mail sets index page
