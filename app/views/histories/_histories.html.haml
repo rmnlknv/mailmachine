@@ -14,3 +14,5 @@
         %td= history.queued.strftime("%d.%m.%Y %H:%M")
         %td= history.recipients_amount
         %td= history.sent ? 'Yes' : 'No'
+
+%div= will_paginate @histories, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

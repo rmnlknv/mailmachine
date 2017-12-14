@@ -1,5 +1,7 @@
-= render 'histories'
-
-%div= will_paginate @histories, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
+.histories
+  = render 'histories'
 
 %div= link_to 'Refresh', histories_path, id: 'refresh_button', remote: true
+%div= link_to 'Show delivered', histories_path(:type => 'delivered'), remote: true
+%div= link_to 'Show not delivered', histories_path(:type => 'not_delivered'), remote: true
+%div= link_to 'Show all', histories_path(:type => 'all'), remote: true
