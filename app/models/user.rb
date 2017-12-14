@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :emails
-  has_many :mail_sets
-  has_many :histories
+  has_many :mail_sets, :dependent => :destroy
+  has_many :histories, :dependent => :destroy
 end
