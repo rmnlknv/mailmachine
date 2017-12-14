@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MailSet, type: :model do
-  it { should have_many :emails }
+  it { should have_many(:emails).dependent(:destroy) }
   it { should belong_to :user }
 
   it { should validate_presence_of :name }

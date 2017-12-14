@@ -1,5 +1,5 @@
 class MailSet < ApplicationRecord
-  has_many :emails
+  has_many :emails, :dependent => :destroy
   belongs_to :user
 
   validates :name, presence: true, length: { in: 3..24 }
@@ -10,7 +10,9 @@ class MailSet < ApplicationRecord
 
   def format_addressee
     # removes spaces that are more than 1 in a row, new lines and tabulations
-    self.addressee = self.addressee.gsub(/[\r\n\t]/, ' ').gsub(/ {2,}/, ' ')
-    self.addressee = self.addressee.split.select{ |a| a[/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i] }.uniq.join(' ')
+    unless self.addressee.nil? 
+      self.addressee = self.addressee.gsub(/[\r\n\t]/, ' ').gsub(/ {2,}/, ' ')
+      self.addressee = self.addressee.split.select{ |a| a[/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i] }.uniq.join(' ')
+    end
   end
 end
