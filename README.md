@@ -1,24 +1,5 @@
-# README
+# MailMachine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Service for sending emails to list of receivers.
+You create set of emails with specified receivers, then add emails to this set with your text and attachments.
+Then, send it immediately or schedule to send at specific time. 
